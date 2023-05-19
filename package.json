@@ -1,0 +1,27 @@
+{
+  "name": "projetize-now",
+  "version": "1.0.0",
+  "description": "## To Do List",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node ./src/app.js",
+    "dev": "nodemon ./src/app.js",
+    "tree": "tree ./src -I node_modules "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "mongoose": "^7.1.1",
+    "validator": "^13.9.0"
+  },
+  "devDependencies": {
+    "mongodb-memory-server": "^8.12.2",
+    "nodemon": "^2.0.22"
+  }
+}
