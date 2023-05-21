@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
+const { isLength } = validator;
+
 const CommentSchema = new Schema(
   {
     text: {
@@ -8,11 +10,7 @@ const CommentSchema = new Schema(
       required: true,
       validate: {
         validator: (value) => {
-          // apenas letras (com ou sem acentos), espaços e apóstrofos
-          const nameRegex = new RegExp("^[a-zA-ZÀ-ÿ\\s']+$");
-          return (
-            nameRegex.test(value) && isLength(value, { min: 1, max: 2000 })
-          );
+          return isLength(value, { min: 1, max: 2000 });
         },
         message: "The text must be between 1 and 2000 characters long.",
       },

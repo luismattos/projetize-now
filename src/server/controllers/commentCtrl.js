@@ -5,23 +5,23 @@ export default commentCtrl;
 
 function CommentCtrl() {
   const list = async (req, res) => {
-    // TODO: Implementar a lógica para listar os comentários
+    // TODO
   };
 
   const get = async (req, res) => {
-    // TODO: Implementar a lógica para obter um comentário específico
+    // TODO
   };
 
   const create = async (req, res) => {
-    // TODO: Implementar a lógica para criar um novo comentário
+    // TODO
   };
 
   const update = async (req, res) => {
-    // TODO: Implementar a lógica para atualizar um comentário existente
+    // TODO
   };
 
   const destroy = async (req, res) => {
-    // TODO: Implementar a lógica para excluir um comentário existente
+    // TODO
   };
 
   return {

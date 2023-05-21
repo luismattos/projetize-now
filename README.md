@@ -22,24 +22,31 @@
   - [x] Task
   - [x] Team Member
   - [x] User
-- [ ] Definir rotas
+- [x] Definir rotas
+  - [x] server
+  - [x] Comment
+  - [x] Project
+  - [x] Task
+  - [x] Team Member
+  - [x] User
+- [x] Criar input validations
+  - [x] Comment
+  - [x] Project
+  - [x] Task
+  - [x] Team Member
+  - [x] User
+- [ ] Criar validation middlewares (verificar unique, etc.)
   - [ ] Comment
   - [ ] Project
   - [ ] Task
   - [ ] Team Member
   - [ ] User
-- [ ] Criar validacoes de entrada e middlewares de Validacao para cada rota
-  - [ ] Comment
-  - [ ] Project
-  - [ ] Task
-  - [ ] Team Member
-  - [x] User
-- [ ] Criar as rotas no servidor (CRUD)
-  - [ ] Create (POST /...)
-  - [ ] List (GET /...)
-  - [ ] Read (GET /.../:id)
-  - [ ] Update (PUT /.../:id)
-  - [ ] Destroy (DELETE /.../)
+- [x] Criar as rotas no servidor (CRUD)
+  - [x] Create (POST /...)
+  - [x] List (GET /...)
+  - [x] Read (GET /.../:id)
+  - [x] Update (PUT /.../:id)
+  - [x] Destroy (DELETE /.../)
 - [ ] Criar Controllers
   - [ ] Comment
   - [ ] Project
@@ -54,6 +61,8 @@
   - [ ] User
 
 ---
+
+[express-validator](https://express-validator.github.io/docs/api/validation-chain)
 
 Validation & Sanitization
 

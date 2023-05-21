@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
+const { isLength } = validator;
+
 const ProjectSchema = new Schema(
   {
     name: {
@@ -8,9 +10,7 @@ const ProjectSchema = new Schema(
       required: true,
       validate: {
         validator: (value) => {
-          // apenas letras (com ou sem acentos), espaços e apóstrofos
-          const nameRegex = new RegExp("^[a-zA-ZÀ-ÿ\\s']+$");
-          return nameRegex.test(value) && isLength(value, { min: 3, max: 50 });
+          return isLength(value, { min: 3, max: 50 });
         },
         message: "The name must be between 3 and 50 characters long.",
       },
@@ -22,11 +22,7 @@ const ProjectSchema = new Schema(
       type: String,
       validate: {
         validator: (value) => {
-          // apenas letras (com ou sem acentos), espaços e apóstrofos
-          const nameRegex = new RegExp("^[a-zA-ZÀ-ÿ\\s']+$");
-          return (
-            nameRegex.test(value) && isLength(value, { min: 3, max: 2000 })
-          );
+          return isLength(value, { min: 3, max: 2000 });
         },
         message: "The description must be between 3 and 2000 characters long.",
       },

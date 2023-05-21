@@ -1,13 +1,26 @@
 import express from "express";
-import validators from "../../utils/validators.js";
+import inVals from "../../utils/inputValidators.js";
+import middlewares from "../../utils/middlewares.js";
 import projectCtrl from "../controllers/projectCtrl.js";
 
 const router = express.Router();
 
-router.get("/projects", validators.project, projectCtrl.list);
-router.get("/projects/:id", projectCtrl.get);
-router.post("/projects", projectCtrl.create);
-router.put("/projects/:id", projectCtrl.update);
-router.delete("/projects/:id", projectCtrl.destroy);
+const mids = [
+  ...inVals.project,
+  ...middlewares.project,
+  (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+    next();
+  },
+];
+
+router.get("/", projectCtrl.list);
+router.get("/:id", projectCtrl.get);
+router.post("/", mids, projectCtrl.create);
+router.put("/:id", mids, projectCtrl.update);
+router.delete("/:id", projectCtrl.destroy);
 
 export default router;

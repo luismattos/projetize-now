@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 import validator from "validator";
 
+const { isLength } = validator;
+
 const TeamMemberSchema = new Schema(
   {
     user: {
@@ -19,14 +21,11 @@ const TeamMemberSchema = new Schema(
     },
     role: {
       type: String,
-      required: true,
       validate: {
         validator: (value) => {
-          // apenas letras (com ou sem acentos), espaços e apóstrofos
-          const nameRegex = new RegExp("^[a-zA-ZÀ-ÿ\\s']+$");
-          return nameRegex.test(value) && isLength(value, { min: 3, max: 50 });
+          return isLength(value, { min: 1, max: 50 });
         },
-        message: "The role must be between 3 and 50 characters long.",
+        message: "The role must be between 1 and 50 characters long.",
       },
       set: (value) => {
         return value.trim();
