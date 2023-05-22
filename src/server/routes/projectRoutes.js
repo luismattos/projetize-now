@@ -1,21 +1,15 @@
 import express from "express";
+import { validationResult } from "express-validator";
 import inVals from "../../utils/inputValidators.js";
 import middlewares from "../../utils/middlewares.js";
 import projectCtrl from "../controllers/projectCtrl.js";
+import error from "../../utils/error.js";
+
+const { ValidationError } = error;
 
 const router = express.Router();
 
-const mids = [
-  ...inVals.project,
-  ...middlewares.project,
-  (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-    next();
-  },
-];
+const mids = [...inVals.project, ...middlewares.project];
 
 router.get("/", projectCtrl.list);
 router.get("/:id", projectCtrl.get);

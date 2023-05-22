@@ -1,26 +1,24 @@
-import userServices from "../services/userServices.js";
-
 const userCtrl = UserCtrl();
 export default userCtrl;
 
 function UserCtrl() {
-  const list = async (req, res) => {
+  const list = async (req, res, next) => {
     //TODO
   };
 
-  const get = async (req, res) => {
+  const get = async (req, res, next) => {
     //TODO
   };
 
-  const create = async (req, res) => {
+  const create = async (req, res, next) => {
     //TODO
   };
 
-  const update = async (req, res) => {
+  const update = async (req, res, next) => {
     //TODO
   };
 
-  const destroy = async (req, res) => {
+  const destroy = async (req, res, next) => {
     //TODO
   };
 

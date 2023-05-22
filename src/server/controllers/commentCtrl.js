@@ -1,26 +1,25 @@
-import commentServices from "../services/commentServices.js";
 
 const commentCtrl = CommentCtrl();
 export default commentCtrl;
 
 function CommentCtrl() {
-  const list = async (req, res) => {
+  const list = async (req, res, next) => {
     // TODO
   };
 
-  const get = async (req, res) => {
+  const get = async (req, res, next) => {
     // TODO
   };
 
-  const create = async (req, res) => {
+  const create = async (req, res, next) => {
     // TODO
   };
 
-  const update = async (req, res) => {
+  const update = async (req, res, next) => {
     // TODO
   };
 
-  const destroy = async (req, res) => {
+  const destroy = async (req, res, next) => {
     // TODO
   };
 

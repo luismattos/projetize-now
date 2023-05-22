@@ -3,9 +3,9 @@ import helmet from "helmet";
 
 import config from "../config.js";
 import routes from "./routes/routes.js";
-import middlewares from "../../utils/middlewares.js";
+import middlewares from "../utils/middlewares.js";
 
-const { sanitizeAndValidate } = middlewares;
+const { sanitizeAndValidate, error } = middlewares;
 
 const server = Server();
 export default server;
@@ -24,7 +24,11 @@ function Server() {
 
     app.use(routes);
 
-    const server = app.listen(port, () => logger.info(`Listening on ${url}!`));
+    app.use(error.logErrors);
+
+    app.use(error.errorHandler);
+
+    const server = app.listen(port, () => console.info(`Listening on ${url}!`));
 
     return server;
   }

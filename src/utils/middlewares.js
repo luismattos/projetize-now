@@ -6,30 +6,33 @@ import {
   cookie,
   validationResult,
 } from "express-validator";
+import customErrors from "./error.js";
+
+const { ValidationError } = customErrors;
 
 const middlewares = Middlewares();
 export default middlewares;
 
 function Middlewares() {
-  const user = [
-    //TODO
-  ];
+  function forward(req, res, next) {
+    const errors = validationResult(req);
 
-  const teamMember = [
-    //TODO
-  ];
+    if (!errors.isEmpty()) {
+      next(ValidationError(errors.array(), 422, "Validation Error"));
+    } else {
+      next();
+    }
+  }
 
-  const task = [
-    //TODO
-  ];
+  const user = [forward];
 
-  const project = [
-    //TODO
-  ];
+  const teamMember = [forward];
 
-  const comment = [
-    //TODO
-  ];
+  const task = [forward];
+
+  const project = [forward];
+
+  const comment = [forward];
 
   const sanitizeAndValidate = async (req, res, next) => {
     Promise.all([
@@ -52,6 +55,23 @@ function Middlewares() {
     });
   };
 
+  const error = (() => {
+    function logErrors(err, req, res, next) {
+      console.error(err);
+      next(err);
+    }
+
+    function errorHandler(err, req, res, next) {
+      if (err.isEmpty()) {
+        res.status(500).json({ error: "Internal Server Error" });
+      } else {
+        res.status(err.code).json({ errors: err });
+      }
+    }
+
+    return { logErrors, errorHandler };
+  })();
+
   return {
     user,
     teamMember,
@@ -59,5 +79,6 @@ function Middlewares() {
     project,
     comment,
     sanitizeAndValidate,
+    error,
   };
 }

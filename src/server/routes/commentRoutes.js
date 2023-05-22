@@ -5,17 +5,7 @@ import commentCtrl from "../controllers/commentCtrl.js";
 
 const router = express.Router();
 
-const mids = [
-  ...inVals.comment,
-  ...middlewares.comment,
-  (req, res, next) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(422).json({ errors: errors.array() });
-    }
-    next();
-  },
-];
+const mids = [...inVals.comment, ...middlewares.comment];
 
 router.get("/", commentCtrl.list);
 router.get("/:id", commentCtrl.get);

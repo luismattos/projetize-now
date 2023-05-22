@@ -1,27 +1,26 @@
-import projectServices from "../services/projectServices.js";
 
 const projectCtrl = ProjectCtrl();
 export default projectCtrl;
 
 function ProjectCtrl() {
-  const list = async (req, res) => {
-    // TODO: Implementar a lógica para listar os projetos
+  const list = async (req, res, next) => {
+    // TODO
   };
 
-  const get = async (req, res) => {
-    // TODO: Implementar a lógica para obter um projeto específico
+  const get = async (req, res, next) => {
+    // TODO
   };
 
-  const create = async (req, res) => {
-    // TODO: Implementar a lógica para criar um novo projeto
+  const create = async (req, res, next) => {
+    // TODO
   };
 
-  const update = async (req, res) => {
-    // TODO: Implementar a lógica para atualizar um projeto existente
+  const update = async (req, res, next) => {
+    // TODO
   };
 
-  const destroy = async (req, res) => {
-    // TODO: Implementar a lógica para excluir um projeto existente
+  const destroy = async (req, res, next) => {
+    // TODO
   };
 
   return {

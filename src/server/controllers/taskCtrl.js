@@ -1,27 +1,26 @@
-import taskServices from "../services/taskServices.js";
 
 const taskCtrl = TaskCtrl();
 export default taskCtrl;
 
 function TaskCtrl() {
-  const list = async (req, res) => {
-    // TODO: Implementar a lógica para listar as tarefas
+  const list = async (req, res, next) => {
+    // TODO
   };
 
-  const get = async (req, res) => {
-    // TODO: Implementar a lógica para obter uma tarefa específica
+  const get = async (req, res, next) => {
+    // TODO
   };
 
-  const create = async (req, res) => {
-    // TODO: Implementar a lógica para criar uma nova tarefa
+  const create = async (req, res, next) => {
+    // TODO
   };
 
-  const update = async (req, res) => {
-    // TODO: Implementar a lógica para atualizar uma tarefa existente
+  const update = async (req, res, next) => {
+    // TODO
   };
 
-  const destroy = async (req, res) => {
-    // TODO: Implementar a lógica para excluir uma tarefa existente
+  const destroy = async (req, res, next) => {
+    // TODO
   };
 
   return {
