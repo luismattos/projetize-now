@@ -1,26 +1,32 @@
+import inVals from "../../utils/inputValidators.js";
+import middlewares from "../../utils/middlewares.js";
+import projectService from "../services/projectService.js";
 
-const projectCtrl = ProjectCtrl();
+const projectCtrl = Ctrl();
 export default projectCtrl;
 
-function ProjectCtrl() {
+function Ctrl() {
+  const service = projectService;
+
   const list = async (req, res, next) => {
-    // TODO
+    return [service.list];
   };
 
   const get = async (req, res, next) => {
-    // TODO
+    return [service.get];
   };
 
   const create = async (req, res, next) => {
-    // TODO
+    return [...inVals.project, ...middlewares.project, service.create];
   };
 
   const update = async (req, res, next) => {
-    // TODO
+    return [...inVals.project, ...middlewares.project, service.update];
   };
 
   const destroy = async (req, res, next) => {
-    // TODO
+    // TODO on delete cascade
+    return [service.destroy];
   };
 
   return {

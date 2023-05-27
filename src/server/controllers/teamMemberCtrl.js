@@ -1,26 +1,32 @@
+import inVals from "../../utils/inputValidators.js";
+import middlewares from "../../utils/middlewares.js";
+import teamMemberService from "../services/teamMemberService.js";
 
-const teamMemberCtrl = TeamMemberCtrl();
+const teamMemberCtrl = Ctrl();
 export default teamMemberCtrl;
 
-function TeamMemberCtrl() {
+function Ctrl() {
+  const service = teamMemberService;
+
   const list = async (req, res, next) => {
-    // TODO
+    return [service.list];
   };
 
   const get = async (req, res, next) => {
-    // TODO
+    return [service.get];
   };
 
   const create = async (req, res, next) => {
-    // TODO
+    return [...inVals.teamMember, ...middlewares.teamMember, service.create];
   };
 
   const update = async (req, res, next) => {
-    // TODO
+    return [...inVals.teamMember, ...middlewares.teamMember, service.update];
   };
 
   const destroy = async (req, res, next) => {
-    // TODO
+    // TODO on delete cascade
+    return [service.destroy];
   };
 
   return {

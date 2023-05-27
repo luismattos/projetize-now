@@ -14,7 +14,7 @@ const middlewares = Middlewares();
 export default middlewares;
 
 function Middlewares() {
-  function forward(req, res, next) {
+  function ifValidatedGoToService(req, res, next) {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
@@ -24,15 +24,15 @@ function Middlewares() {
     }
   }
 
-  const user = [forward];
+  const user = [ifValidatedGoToService];
 
-  const teamMember = [forward];
+  const teamMember = [ifValidatedGoToService];
 
-  const task = [forward];
+  const task = [ifValidatedGoToService];
 
-  const project = [forward];
+  const project = [ifValidatedGoToService];
 
-  const comment = [forward];
+  const comment = [ifValidatedGoToService];
 
   const sanitizeAndValidate = async (req, res, next) => {
     Promise.all([

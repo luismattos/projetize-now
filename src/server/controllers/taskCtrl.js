@@ -1,26 +1,32 @@
+import inVals from "../../utils/inputValidators.js";
+import middlewares from "../../utils/middlewares.js";
+import taskService from "../services/taskService.js";
 
-const taskCtrl = TaskCtrl();
+const taskCtrl = Ctrl();
 export default taskCtrl;
 
-function TaskCtrl() {
+function Ctrl() {
+  const service = taskService;
+
   const list = async (req, res, next) => {
-    // TODO
+    return [service.list];
   };
 
   const get = async (req, res, next) => {
-    // TODO
+    return [service.get];
   };
 
   const create = async (req, res, next) => {
-    // TODO
+    return [...inVals.task, ...middlewares.task, service.create];
   };
 
   const update = async (req, res, next) => {
-    // TODO
+    return [...inVals.task, ...middlewares.task, service.update];
   };
 
   const destroy = async (req, res, next) => {
-    // TODO
+    // TODO on delete cascade
+    return [service.destroy];
   };
 
   return {

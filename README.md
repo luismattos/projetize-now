@@ -11,36 +11,31 @@
   - [x] Criptografia de Password utilizando pepper+salt+iteracoes
   - [ ] logger e http-logger
 - [x] Criar modelos do DB
-  - [x] Comment
   - [x] Project
   - [x] Task
   - [x] Team Member
   - [x] User
 - [x] Criar validacoes nos schemas
-  - [x] Comment
   - [x] Project
   - [x] Task
   - [x] Team Member
   - [x] User
 - [x] Definir rotas
   - [x] server
-  - [x] Comment
   - [x] Project
   - [x] Task
   - [x] Team Member
   - [x] User
-- [x] Criar input validations
-  - [x] Comment
+- [x] Criar input validations nos Ctrls
   - [x] Project
   - [x] Task
   - [x] Team Member
   - [x] User
-- [ ] Criar validation middlewares (verificar unique, etc.)
-  - [ ] Comment
-  - [ ] Project
-  - [ ] Task
-  - [ ] Team Member
-  - [ ] User
+- [x] Criar middlewares
+  - [x] Project
+  - [x] Task
+  - [x] Team Member
+  - [x] User
 - [x] Criar as rotas no servidor (CRUD)
   - [x] Create (POST /...)
   - [x] List (GET /...)
@@ -48,13 +43,12 @@
   - [x] Update (PUT /.../:id)
   - [x] Destroy (DELETE /.../)
 - [ ] Criar Controllers
-  - [ ] Comment
-  - [ ] Project
-  - [ ] Task
-  - [ ] Team Member
-  - [ ] User
+  - [x] Project
+  - [x] Task
+  - [x] Team Member
+  - [x] User
+  - [ ] destroy: ON DELETE CASCADE
 - [ ] Criar Services
-  - [ ] Comment
   - [ ] Project
   - [ ] Task
   - [ ] Team Member

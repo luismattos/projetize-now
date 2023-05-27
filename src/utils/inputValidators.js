@@ -1,4 +1,4 @@
-import { body } from "express-validator";
+import { body, validationResult } from "express-validator";
 
 const inputValidators = InputValidators();
 export default inputValidators;
