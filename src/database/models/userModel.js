@@ -7,7 +7,7 @@ const { isEmail, isStrongPassword, isLength } = validator;
 const UserSchema = new mongoose.Schema(
   {
     name: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       required: true,
       validate: {
         validator: (value) => {
@@ -22,7 +22,7 @@ const UserSchema = new mongoose.Schema(
       },
     },
     email: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       required: true,
       unique: true,
       lowercase: true,
@@ -37,7 +37,7 @@ const UserSchema = new mongoose.Schema(
       },
     },
     password: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       required: true,
       validate: {
         validator: (value) => {
@@ -59,7 +59,10 @@ const UserSchema = new mongoose.Schema(
       },
     },
   },
-  { timestamps: true }
+  {
+    timestamps: true,
+    strictQuery: "throw",
+  }
 );
 
 const User = mongoose.model("User", UserSchema);

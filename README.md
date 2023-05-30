@@ -43,16 +43,16 @@
   - [x] Update (PUT /.../:id)
   - [x] Destroy (DELETE /.../)
 - [ ] Criar Controllers
-  - [x] Project
-  - [x] Task
-  - [x] Team Member
-  - [x] User
+  - [ ] Project
+  - [ ] Task
+  - [ ] Team Member
+  - [ ] User
   - [ ] destroy: ON DELETE CASCADE
 - [ ] Criar Services
   - [ ] Project
   - [ ] Task
   - [ ] Team Member
-  - [ ] User
+  - [x] User
 
 ---
 

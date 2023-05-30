@@ -3,10 +3,10 @@ import validator from "validator";
 
 const { isLength } = validator;
 
-const ProjectSchema = new Schema(
+const ProjectSchema = new mongoose.Schema(
   {
     name: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       required: true,
       validate: {
         validator: (value) => {
@@ -19,7 +19,7 @@ const ProjectSchema = new Schema(
       },
     },
     description: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       validate: {
         validator: (value) => {
           return isLength(value, { min: 3, max: 2000 });
@@ -31,11 +31,11 @@ const ProjectSchema = new Schema(
       },
     },
     startDate: {
-      type: Date,
+      type: mongoose.Schema.Types.Date,
       default: Date.now,
     },
     endDate: {
-      type: Date,
+      type: mongoose.Schema.Types.Date,
     },
   },
   { timestamps: true }

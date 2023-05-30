@@ -6,9 +6,6 @@ import {
   cookie,
   validationResult,
 } from "express-validator";
-import customErrors from "./error.js";
-
-const { ValidationError } = customErrors;
 
 const middlewares = Middlewares();
 export default middlewares;
@@ -18,21 +15,11 @@ function Middlewares() {
     const errors = validationResult(req);
 
     if (!errors.isEmpty()) {
-      next(ValidationError(errors.array(), 422, "Validation Error"));
+      next(errors);
     } else {
       next();
     }
   }
-
-  const user = [ifValidatedGoToService];
-
-  const teamMember = [ifValidatedGoToService];
-
-  const task = [ifValidatedGoToService];
-
-  const project = [ifValidatedGoToService];
-
-  const comment = [ifValidatedGoToService];
 
   const sanitizeAndValidate = async (req, res, next) => {
     Promise.all([
@@ -73,11 +60,7 @@ function Middlewares() {
   })();
 
   return {
-    user,
-    teamMember,
-    task,
-    project,
-    comment,
+    ifValidatedGoToService,
     sanitizeAndValidate,
     error,
   };

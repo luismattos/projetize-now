@@ -3,10 +3,10 @@ import validator from "validator";
 
 const { isLength } = validator;
 
-const TaskSchema = new Schema(
+const TaskSchema = new mongoose.Schema(
   {
     title: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       required: true,
       validate: {
         validator: (value) => {
@@ -19,7 +19,7 @@ const TaskSchema = new Schema(
       },
     },
     description: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       validate: {
         validator: (value) => {
           return isLength(value, { min: 3, max: 50 });
@@ -31,19 +31,19 @@ const TaskSchema = new Schema(
       },
     },
     startDate: {
-      type: Date,
+      type: mongoose.Schema.Types.Date,
     },
     endDate: {
-      type: Date,
+      type: mongoose.Schema.Types.Date,
     },
     priority: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       enum: ["high", "medium", "low"],
       default: "medium",
       required: true,
     },
     status: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       enum: ["in progress", "completed", "pending"],
       default: "pending",
       required: true,
@@ -53,15 +53,13 @@ const TaskSchema = new Schema(
       ref: "Project",
       required: true,
     },
-    teamMember: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "TeamMember",
-      },
-    ],
   },
   { timestamps: true }
 );
+
+TaskSchema.query.byProjectId = function (projectId) {
+  return this.where("project").equals(new mongoose.Types.ObjectId(projectId));
+};
 
 const Task = mongoose.model("Task", TaskSchema);
 

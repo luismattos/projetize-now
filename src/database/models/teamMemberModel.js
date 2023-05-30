@@ -3,7 +3,7 @@ import validator from "validator";
 
 const { isLength } = validator;
 
-const TeamMemberSchema = new Schema(
+const TeamMemberSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
@@ -20,7 +20,7 @@ const TeamMemberSchema = new Schema(
       required: true,
     },
     role: {
-      type: String,
+      type: mongoose.Schema.Types.String,
       validate: {
         validator: (value) => {
           return isLength(value, { min: 1, max: 50 });
@@ -34,6 +34,14 @@ const TeamMemberSchema = new Schema(
   },
   { timestamps: true }
 );
+
+TeamMemberSchema.query.byUserId = function (userId) {
+  return this.where("user").equals(new mongoose.Types.ObjectId(userId));
+};
+
+TeamMemberSchema.query.byProjectId = function (projectId) {
+  return this.where("project").equals(new mongoose.Types.ObjectId(projectId));
+};
 
 const TeamMember = mongoose.model("TeamMember", TeamMemberSchema);
 export default TeamMember;
