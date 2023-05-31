@@ -9,11 +9,17 @@ const TeamMemberSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
+      set: (value) => {
+        return new mongoose.Schema.Types.ObjectId(value);
+      },
     },
     project: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
+      set: (value) => {
+        return new mongoose.Schema.Types.ObjectId(value);
+      },
     },
     isOwner: {
       type: mongoose.Schema.Types.Boolean,

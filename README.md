@@ -51,7 +51,7 @@
 - [ ] Criar Services
   - [ ] Project
   - [ ] Task
-  - [ ] Team Member
+  - [x] Team Member
   - [x] User
 
 ---

@@ -22,7 +22,7 @@ function Service() {
       const query = User.find();
       users = await query.exec();
     } catch (error) {
-      new ServiceResponse(
+      return new ServiceResponse(
         false,
         500,
         null,
@@ -31,7 +31,7 @@ function Service() {
     }
 
     if (!users) {
-      new ServiceResponse(
+      return new ServiceResponse(
         false,
         404,
         null,
@@ -39,7 +39,7 @@ function Service() {
       );
     }
 
-    new ServiceResponse(true, 200, users, null);
+    return new ServiceResponse(true, 200, users, null);
   }
 
   async function read(id) {
@@ -69,7 +69,7 @@ function Service() {
   }
 
   async function create(name, email, password) {
-    if (isTheEmailAlreadyRegistered(email)) {
+    if (await isTheEmailAlreadyRegistered(email)) {
       return new ServiceResponse(
         false,
         409,
@@ -99,7 +99,7 @@ function Service() {
         false,
         500,
         null,
-        new Error("Erro ao realizar a criação.")
+        new Error("Erro ao realizar a criação do User.")
       );
     }
 
@@ -130,7 +130,7 @@ function Service() {
       );
     }
 
-    if (isTheEmailAlreadyRegistered(newEmail)) {
+    if (await isTheEmailAlreadyRegistered(newEmail)) {
       return new ServiceResponse(
         false,
         409,
@@ -166,7 +166,7 @@ function Service() {
         false,
         500,
         null,
-        new Error("Erro ao realizar a atualização.")
+        new Error("Erro ao realizar a atualização do usuario.")
       );
     }
 

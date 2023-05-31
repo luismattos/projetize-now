@@ -4,7 +4,7 @@ export default projectService;
 function Service() {
   function list() {}
 
-  function get() {}
+  function read() {}
 
   function create() {}
 
@@ -12,5 +12,5 @@ function Service() {
 
   function destroy() {}
 
-  return { list, get, create, update, destroy };
+  return { list, read, create, update, destroy };
 }
