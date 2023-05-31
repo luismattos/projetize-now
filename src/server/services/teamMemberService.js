@@ -1,6 +1,5 @@
-import mongoose from "mongoose";
-import TeamMember from "../../database/models/teamMemberModel";
-import ServiceResponse from "../../utils/serviceResponse";
+import TeamMember from "../../database/models/teamMemberModel.js";
+import ServiceResponse from "../../utils/serviceResponse.js";
 
 const teamMemberService = Service();
 export default teamMemberService;
@@ -72,7 +71,7 @@ function Service() {
     return new ServiceResponse(true, 200, tm, null);
   }
 
-  async function create(userId, projectId, isOwner, role) {
+  async function create({ userId, projectId, isOwner, role }) {
     if (await IsTheUserAlreadyInTheProject(userId, projectId)) {
       return new ServiceResponse(
         false,
@@ -114,7 +113,7 @@ function Service() {
     return new ServiceResponse(true, 201, tm, null);
   }
 
-  async function update(id, isOwner, role) {
+  async function update(id, { isOwner, role }) {
     let tm;
 
     try {

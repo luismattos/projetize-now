@@ -18,6 +18,7 @@ function Service() {
 
   async function list() {
     let users;
+
     try {
       const query = User.find();
       users = await query.exec();
@@ -43,11 +44,18 @@ function Service() {
   }
 
   async function read(id) {
-    let user;
-
     try {
       const query = User.findById(id);
-      user = await query.exec();
+      const user = await query.exec();
+      if (!user) {
+        return new ServiceResponse(
+          false,
+          404,
+          null,
+          new Error("Usuário não encontrado.")
+        );
+      }
+      return new ServiceResponse(true, 200, user, null);
     } catch (error) {
       return new ServiceResponse(
         false,
@@ -56,19 +64,9 @@ function Service() {
         new Error("Erro ao buscar usuário.")
       );
     }
-    if (!user) {
-      return new ServiceResponse(
-        false,
-        404,
-        null,
-        new Error("Usuário não encontrado.")
-      );
-    }
-
-    return new ServiceResponse(true, 200, user, null);
   }
 
-  async function create(name, email, password) {
+  async function create({ name, email, password }) {
     if (await isTheEmailAlreadyRegistered(email)) {
       return new ServiceResponse(
         false,
@@ -77,9 +75,8 @@ function Service() {
         new Error("Email já cadastrado.")
       );
     }
-    let newUser;
 
-    newUser = new User({ name, email, password });
+    const newUser = new User({ name, email, password });
 
     try {
       await newUser.validate();
@@ -106,7 +103,7 @@ function Service() {
     return new ServiceResponse(true, 201, newUser, null);
   }
 
-  async function update(id, newName, newEmail, newPassword) {
+  async function update(id, { newName, newEmail, newPassword }) {
     let user;
 
     try {

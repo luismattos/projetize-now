@@ -49,8 +49,8 @@
   - [ ] User
   - [ ] destroy: ON DELETE CASCADE
 - [ ] Criar Services
-  - [ ] Project
-  - [ ] Task
+  - [x] Project
+  - [x] Task
   - [x] Team Member
   - [x] User
 
